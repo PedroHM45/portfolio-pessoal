@@ -1,16 +1,3 @@
-// ===== PORTFÓLIO JAPONÊS SUMI-E - MAIN JAVASCRIPT =====
-
-/**
- * Sistema principal de navegação e funcionalidades do portfólio
- * Inspirado na arte japonesa Sumi-e
- * 
- * NAVEGAÇÃO: Exclusivamente por clique nos links do menu
- * - Sem navegação por scroll/wheel
- * - Sem navegação por swipe/touch
- * - Sem navegação por teclado (exceto Escape para fechar menu)
- * - Transições suaves sem movimento vertical da tela
- */
-
 class SumieSidebar {
     constructor() {
         this.sections = ['home', 'about', 'skills', 'projects', 'contact'];
