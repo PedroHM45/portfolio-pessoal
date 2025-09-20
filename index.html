@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio</title>
+    
+    <!-- Preconnect para Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Carregamento crítico do CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Fontes com display=swap para melhor performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Script com defer para não bloquear renderização -->
+    <script src="assets/js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- Menu Hambúrguer Mobile -->
+    <div class="mobile-menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Overlay -->
+    <div class="mobile-overlay"></div>
+
+    <!-- Sidebar Menu -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <div class="code-symbol">{ }</div>
+                <h1 class="logo-text">PORTFÓLIO</h1>
+                <div class="logo-subtitle">— DEVELOPER —</div>
+                <div class="brush-stroke"></div>
+            </div>
+        </div>
+
+        <div class="sidebar-content">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link" data-section="home">
+                        <span class="nav-text">INÍCIO</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#about" class="nav-link" data-section="about">
+                        <span class="nav-text">SOBRE</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link" data-section="skills">
+                        <span class="nav-text">HABILIDADES</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link" data-section="projects">
+                        <span class="nav-text">PROJETOS</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link" data-section="contact">
+                        <span class="nav-text">CONTATO</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <!-- Footer simplificado sem conteúdo -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Seção Início -->
+        <section id="home" class="section active">
+            <div class="home-container">
+                <div class="intro-content">
+                    <div class="name-section">
+                        <h1 class="name">Pedro Moitinho</h1>
+                        <div class="name-underline"></div>
+                    </div>
+
+                    <div class="role-section">
+                        <span class="role">Estudante de Análise e desenvolvimento de sistemas</span>
+                    </div>
+
+                </div>
+
+                <div class="cta-section">
+                    <div class="cta-button" onclick="window.SumieSidebar.setActiveSection('projects')">
+                        <span>Veja meus projetos</span>
+                        <div class="cta-icon">→</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="zen-decoration">
+                <!-- Elementos de quadro sutil -->
+            </div>
+            </div>
+        </section>
+
+        <!-- Seção Sobre -->
+        <section id="about" class="section">
+            <div class="about-container">
+                <div class="about-header">
+                    <h2 class="section-title">Sobre</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-intro">
+                        <p class="intro-text">
+                            Como estudante de Análise e Desenvolvimento de Sistemas, sou motivado pelo potencial da
+                            tecnologia em gerar valor para os negócios e facilitar o dia a dia. Meu objetivo é dedicar
+                            meu aprendizado para ser capaz de construir soluções que impulsionem a eficiência e a
+                            geração de valor.
+                        </p>
+                    </div>
+
+                    <div class="about-details">
+                        <div class="detail-card">
+                            <div class="card-icon">🎯</div>
+                            <h3 class="card-title">Foco</h3>
+                            <p class="card-description">
+                                Foco na automação de processos e no desenvolvimento de soluções com Python, aplicados às
+                                áreas de Análise de Dados, IA e Cloud.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="about-action">
+                        <div class="action-link" onclick="window.SumieSidebar.setActiveSection('skills')">
+                            <span>Ver minhas habilidades</span>
+                            <div class="action-arrow">→</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Habilidades -->
+        <section id="skills" class="section">
+            <div class="skills-container">
+                <!-- Header da Seção -->
+                <div class="skills-header">
+                    <h2 class="section-title">Habilidades</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <!-- Conteúdo das Habilidades -->
+                <div class="skills-content">
+
+                    <!-- Linguagens de Programação -->
+                    <div class="skill-block">
+                        <div class="skill-info">
+                            <h3 class="skill-title">Linguagens de Programação</h3>
+                            <div class="skill-tech">
+                                <div class="tech-item">
+                                    <img src="assets/images/icon-python.svg" alt="Python" class="tech-icon">
+                                    <span class="tech-name">Python</span>
+                                </div>
+                            </div>
+                            <p class="skill-description">Desenvolvimento backend, automação e análise de dados</p>
+                        </div>
+                    </div>
+
+                    <!-- Dados -->
+                    <div class="skill-block">
+                        <div class="skill-info">
+                            <h3 class="skill-title">Dados</h3>
+                            <div class="skill-tech">
+                                <div class="tech-item">
+                                    <img src="assets/images/icon-mongodb.svg" alt="MongoDB" class="tech-icon">
+                                    <span class="tech-name">MongoDB</span>
+                                </div>
+                                <div class="tech-item">
+                                    <img src="assets/images/icon-tableau.svg" alt="Tableau" class="tech-icon">
+                                    <span class="tech-name">Tableau</span>
+                                </div>
+                            </div>
+                            <p class="skill-description">Banco de dados NoSQL e visualização de dados interativa</p>
+                        </div>
+                    </div>
+
+                    <!-- Cloud Computing -->
+                    <div class="skill-block">
+                        <div class="skill-info">
+                            <h3 class="skill-title">Cloud Computing</h3>
+                            <div class="skill-tech">
+                                <div class="tech-item">
+                                    <img src="assets/images/icon-aws.svg" alt="AWS" class="tech-icon">
+                                </div>
+                                <div class="tech-item">
+                                    <img src="assets/images/icon-azure.svg" alt="Azure" class="tech-icon">
+                                    <span class="tech-name">Azure</span>
+                                </div>
+                            </div>
+                            <p class="skill-description">Infraestrutura e serviços em nuvem para aplicações escaláveis
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- DevOps -->
+                    <div class="skill-block">
+                        <div class="skill-info">
+                            <h3 class="skill-title">DevOps</h3>
+                            <div class="skill-tech">
+                                <div class="tech-item">
+                                    <img src="assets/images/icon-docker.svg" alt="Docker" class="tech-icon">
+                                    <span class="tech-name">Docker</span>
+                                </div>
+                            </div>
+                            <p class="skill-description">Containerização e deployment de aplicações</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Ação -->
+                <div class="skills-action">
+                    <div class="action-link" onclick="window.SumieSidebar.setActiveSection('projects')">
+                        <span>Ver meus projetos</span>
+                        <div class="action-arrow">→</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Projetos -->
+        <section id="projects" class="section">
+            <div class="projects-container">
+                <!-- Header da Seção -->
+                <div class="projects-header">
+                    <h2 class="section-title">Projetos</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <!-- Carrossel de Projetos -->
+                <div class="projects-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-track">
+
+                            <!-- Projeto 1 -->
+                            <div class="project-slide">
+                                <div class="project-card">
+                                    <div class="project-image">
+                                        <div class="image-placeholder">
+                                            <span>Em desenvolvimento</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="project-title">Projeto em Desenvolvimento</h3>
+                                        <p class="project-description">
+                                            Este projeto está sendo desenvolvido e será adicionado ao portfólio em
+                                            breve.
+                                            Acompanhe as atualizações para conhecer mais detalhes.
+                                        </p>
+                                        <div class="project-tech">
+                                            <img data-src="assets/images/icon-python.svg" alt="Python"
+                                                class="project-tech-icon lazy-load">
+                                            <img data-src="assets/images/icon-mongodb.svg" alt="MongoDB"
+                                                class="project-tech-icon lazy-load">
+                                            <img data-src="assets/images/icon-aws.svg" alt="AWS" class="project-tech-icon lazy-load">
+                                        </div>
+                                        <div class="project-actions">
+                                            <div class="project-link-disabled">
+                                                <span>Em breve</span>
+                                                <div class="link-arrow">⏳</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Projeto 2 -->
+                            <div class="project-slide">
+                                <div class="project-card">
+                                    <div class="project-image">
+                                        <div class="image-placeholder">
+                                            <span>Em desenvolvimento</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="project-title">Projeto em Desenvolvimento</h3>
+                                        <p class="project-description">
+                                            Este projeto está sendo desenvolvido e será adicionado ao portfólio em
+                                            breve.
+                                            Acompanhe as atualizações para conhecer mais detalhes.
+                                        </p>
+                                        <div class="project-tech">
+                                            <img data-src="assets/images/icon-python.svg" alt="Python"
+                                                class="project-tech-icon lazy-load">
+                                            <img data-src="assets/images/icon-tableau.svg" alt="Tableau"
+                                                class="project-tech-icon lazy-load">
+                                            <img data-src="assets/images/icon-azure.svg" alt="Azure"
+                                                class="project-tech-icon lazy-load">
+                                        </div>
+                                        <div class="project-actions">
+                                            <div class="project-link-disabled">
+                                                <span>Em breve</span>
+                                                <div class="link-arrow">⏳</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Projeto 3 -->
+                            <div class="project-slide">
+                                <div class="project-card">
+                                    <div class="project-image">
+                                        <div class="image-placeholder">
+                                            <span>Em desenvolvimento</span>
+                                        </div>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="project-title">Projeto em Desenvolvimento</h3>
+                                        <p class="project-description">
+                                            Este projeto está sendo desenvolvido e será adicionado ao portfólio em
+                                            breve.
+                                            Acompanhe as atualizações para conhecer mais detalhes.
+                                        </p>
+                                        <div class="project-tech">
+                                            <img data-src="assets/images/icon-python.svg" alt="Python"
+                                                class="project-tech-icon lazy-load">
+                                            <img data-src="assets/images/icon-docker.svg" alt="Docker"
+                                                class="project-tech-icon lazy-load">
+                                            <img data-src="assets/images/icon-aws.svg" alt="AWS" class="project-tech-icon lazy-load">
+                                        </div>
+                                        <div class="project-actions">
+                                            <div class="project-link-disabled">
+                                                <span>Em breve</span>
+                                                <div class="link-arrow">⏳</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Controles do Carrossel -->
+                    <div class="carousel-controls">
+                        <button class="carousel-btn carousel-prev" aria-label="Projeto anterior">‹</button>
+                        <div class="carousel-dots">
+                            <button class="carousel-dot active" data-slide="0"></button>
+                            <button class="carousel-dot" data-slide="1"></button>
+                            <button class="carousel-dot" data-slide="2"></button>
+                        </div>
+                        <button class="carousel-btn carousel-next" aria-label="Próximo projeto">›</button>
+                    </div>
+                </div>
+
+                <!-- Ação -->
+                <div class="projects-action">
+                    <div class="action-link" onclick="window.SumieSidebar.setActiveSection('contact')">
+                        <span>Entre em contato</span>
+                        <div class="action-arrow">→</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Contato -->
+        <section id="contact" class="section">
+            <div class="section-content">
+                <div class="section-header">
+                    <div class="vinheta-ornament" aria-hidden="true"></div>
+                    <h2 class="section-title">Contato</h2>
+                    <div class="vinheta-ornament" aria-hidden="true"></div>
+                </div>
+                <div class="title-underline"></div>
+
+                <div class="contact-content">
+                    <div class="contact-intro">
+                        <p class="contact-description">
+                            Entre em contato comigo através dos canais
+                            abaixo.
+                        </p>
+                    </div>
+
+                    <div class="contact-grid">
+                        <!-- Email -->
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="contact-info">
+                                <h3 class="contact-label">Email</h3>
+                                <a href="mailto:seuemail@exemplo.com" class="contact-link">pedro.mmoitinho45@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <!-- LinkedIn -->
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="contact-info">
+                                <h3 class="contact-label">LinkedIn</h3>
+                                <a href="https://www.linkedin.com/in/pedro-moitinho" target="_blank"
+                                    class="contact-link">/in/pedro-moitinho</a>
+                            </div>
+                        </div>
+
+                        <!-- GitHub -->
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="contact-info">
+                                <h3 class="contact-label">GitHub</h3>
+                                <a href="https://github.com/PedroHM45" target="_blank"
+                                    class="contact-link">/PedroHM45</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
