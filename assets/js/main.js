@@ -1,9 +1,32 @@
+// ===== GERENCIADOR DE SEGURANÇA SIMPLIFICADO =====
+class SecurityManager {
+    constructor() {
+        this.allowedSections = ['home', 'about', 'skills', 'projects', 'contact'];
+        this.emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    }
+    
+    // Validar seção de navegação
+    validateSection(section) {
+        if (!section || typeof section !== 'string') return false;
+        return this.allowedSections.includes(section);
+    }
+    
+    // Validar email
+    validateEmail(email) {
+        if (!email || typeof email !== 'string') return false;
+        return this.emailRegex.test(email) && email.length < 255;
+    }
+}
+
 class SumieSidebar {
     constructor() {
         this.sections = ['home', 'about', 'skills', 'projects', 'contact'];
         this.currentSection = 'home';
         this.isMenuOpen = false;
         this.isMobile = window.innerWidth <= 768;
+        
+        // Instância do gerenciador de segurança
+        this.security = new SecurityManager();
         
         // Cache de seletores para performance
         this.cache = {};
@@ -101,18 +124,23 @@ class SumieSidebar {
         e.preventDefault();
         const targetSection = e.currentTarget.dataset.section;
         
-        if (targetSection && this.sections.includes(targetSection)) {
-            this.setActiveSection(targetSection);
-            
-            // Fechar menu mobile se estiver aberto
-            if (this.isMenuOpen) {
-                this.closeMobileMenu();
-            }
+        // Validações de segurança
+        if (!this.security.validateSection(targetSection)) {
+            console.warn('Tentativa de navegação para seção inválida:', this.security.sanitizeLogData({ section: targetSection }));
+            return;
+        }
+        
+        this.setActiveSection(targetSection);
+        
+        // Fechar menu mobile se estiver aberto
+        if (this.isMenuOpen) {
+            this.closeMobileMenu();
         }
     }
 
     setActiveSection(sectionName) {
-        if (!this.sections.includes(sectionName) || sectionName === this.currentSection) {
+        // Validação de segurança adicional
+        if (!this.security.validateSection(sectionName) || sectionName === this.currentSection) {
             return;
         }
 
@@ -459,16 +487,30 @@ class SumieSidebar {
     }
 
     async copyEmailToClipboard(email, event) {
+        // Validação de email
+        if (!this.security.validateEmail(email)) {
+            console.warn('Tentativa de cópia de email inválido');
+            this.showCopyNotification('Email inválido', 'error', event);
+            return;
+        }
+        
         try {
             await navigator.clipboard.writeText(email);
             this.showCopyNotification('Copiado!', 'success', event);
         } catch (err) {
+            console.error('Erro ao copiar email via clipboard API');
             // Fallback para navegadores mais antigos
             this.fallbackCopyTextToClipboard(email, event);
         }
     }
 
     fallbackCopyTextToClipboard(text, event) {
+        // Validação adicional para o fallback
+        if (!this.security.validateEmail(text)) {
+            this.showCopyNotification('Email inválido', 'error', event);
+            return;
+        }
+        
         const textArea = document.createElement('textarea');
         textArea.value = text;
         textArea.style.top = '0';
@@ -485,10 +527,11 @@ class SumieSidebar {
             if (successful) {
                 this.showCopyNotification('Copiado!', 'success', event);
             } else {
-                this.showCopyNotification('Erro', 'error', event);
+                this.showCopyNotification('Erro ao copiar', 'error', event);
             }
         } catch (err) {
-            this.showCopyNotification('Erro', 'error', event);
+            console.error('Erro no fallback de cópia');
+            this.showCopyNotification('Erro ao copiar', 'error', event);
         }
 
         document.body.removeChild(textArea);
@@ -1037,10 +1080,40 @@ document.addEventListener('DOMContentLoaded', () => {
     window.ThemeManager = new ThemeManager();
     window.NotificationManager = new NotificationManager();
     
-    // Configuração global de erro
+    // Configuração global de erro segura
     window.addEventListener('error', (e) => {
-        console.error('❌ Erro no portfólio:', e.error);
+        // Log interno sem detalhes sensíveis
+        const isProduction = window.location.hostname !== 'localhost' && 
+                            window.location.hostname !== '127.0.0.1';
+        
+        if (!isProduction) {
+            console.error('❌ Erro no portfólio:', e.error);
+        } else {
+            console.error('❌ Erro interno');
+        }
+        
+        // Notificação genérica para o usuário
         window.NotificationManager?.show('Ops! Algo deu errado.', 'error');
+        
+        // Em produção, você pode enviar dados sanitizados para analytics
+        if (isProduction && window.SumieSidebar?.security) {
+            const sanitizedError = window.SumieSidebar.security.sanitizeLogData({
+                message: 'client_error',
+                timestamp: Date.now(),
+                url: window.location.pathname,
+                userAgent: navigator.userAgent.substring(0, 100)
+            });
+            
+            // Aqui você poderia enviar para um serviço de analytics
+            // analytics.track('client_error', sanitizedError);
+        }
+    });
+    
+    // Tratamento para erros não capturados de Promises
+    window.addEventListener('unhandledrejection', (e) => {
+        console.error('❌ Promise rejeitada:', e.reason);
+        window.NotificationManager?.show('Erro inesperado.', 'error');
+        e.preventDefault(); // Previne que o erro apareça no console do usuário
     });
     
     console.log('🎌 Portfólio Sumi-e totalmente carregado!');
