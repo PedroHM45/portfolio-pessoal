@@ -1275,10 +1275,11 @@ body::before {
 }
 
 .carousel-container {
+    overflow: hidden;
     border-radius: 16px;
     position: relative;
     width: 100%;
-    padding: 0 0 30px 0; /* Padding inferior para acomodar box-shadow */
+    padding: 0 0 40px 0; /* Padding inferior maior para acomodar box-shadow */
 }
 
 .carousel-track {
@@ -1294,12 +1295,12 @@ body::before {
 .project-slide {
     width: 33.333%; /* 100% / 3 slides = um projeto por tela */
     flex-shrink: 0;
-    padding: 0 10px 30px 10px; /* Padding para acomodar box-shadow */
+    padding: 0 15px 25px 15px; /* Padding ajustado para evitar vazamento lateral */
     box-sizing: border-box;
     display: flex;
     align-items: stretch; /* Altura uniforme para todos os cards */
     justify-content: center;
-    min-height: 430px; /* Aumentado para acomodar padding inferior */
+    min-height: 420px; /* Ajustado para novo padding */
 }
 
 /* ===== CARD DE PROJETO (CARROSSEL) ===== */
@@ -1324,7 +1325,7 @@ body::before {
 .project-card:hover {
     background: rgba(248, 247, 244, 0.7);
     border-color: rgba(26, 26, 26, 0.15);
-    box-shadow: 0 15px 30px rgba(26, 26, 26, 0.1);
+    box-shadow: 0 8px 25px rgba(26, 26, 26, 0.12);
 }
 
 /* ===== IMAGEM DO PROJETO ===== */
