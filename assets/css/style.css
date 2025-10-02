@@ -1269,7 +1269,7 @@ body::before {
 /* ===== CARROSSEL DE PROJETOS ===== */
 .projects-carousel {
     width: 100%;
-    max-width: 600px; /* Reduzido para comportar apenas um card */
+    max-width: 1000px; /* Aumentado de 800px para 1000px para acomodar cards maiores */
     margin: 0 auto 60px auto;
     position: relative;
 }
@@ -1279,7 +1279,6 @@ body::before {
     position: relative;
     width: 100%;
     padding: 0 0 30px 0; /* Padding inferior para acomodar box-shadow */
-    overflow: hidden; /* Esconder cards adjacentes */
 }
 
 .carousel-track {
@@ -1293,12 +1292,12 @@ body::before {
 }
 
 .project-slide {
-    width: 33.333%; /* Mantém 33.333% para o carrossel funcionar */
+    width: 33.333%; /* 100% / 3 slides = um projeto por tela */
     flex-shrink: 0;
-    padding: 0 20px 30px 20px; /* Padding lateral maior para centralizar melhor */
+    padding: 0 10px 30px 10px; /* Padding para acomodar box-shadow */
     box-sizing: border-box;
     display: flex;
-    align-items: center; /* Centralizar verticalmente */
+    align-items: stretch; /* Altura uniforme para todos os cards */
     justify-content: center;
     min-height: 430px; /* Aumentado para acomodar padding inferior */
 }
@@ -1314,8 +1313,8 @@ body::before {
                 border-color 0.8s cubic-bezier(0.23, 1, 0.32, 1),
                 box-shadow 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     opacity: 1;
-    width: 100%; /* Card ocupa 100% do slide */
-    max-width: 500px; /* Tamanho máximo adequado */
+    width: 95%; /* Aumentado de 90% para 95% - mais largo */
+    max-width: 600px; /* Aumentado de 400px para 600px - muito mais largo */
     margin: 0 auto;
     /* Performance optimization */
     will-change: transform;
