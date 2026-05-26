@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio</title>
-    
+
     <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
@@ -23,20 +23,22 @@
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-    
+
     <!-- Preconnect para Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
     <!-- Carregamento crítico do CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
     <!-- Fontes com display=swap para melhor performance -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
     <!-- Script com defer para não bloquear renderização -->
     <script src="assets/js/main.js" defer></script>
 </head>
@@ -114,7 +116,8 @@
                     </div>
 
                     <div class="role-section">
-                        <span class="role">Estudante de Análise e desenvolvimento de sistemas</span>
+                        <span class="role">Análise e Desenvolvimento de Sistemas | Data Analytics | Business
+                            Intelligence | Machine Learning</span>
                     </div>
 
                 </div>
@@ -144,32 +147,26 @@
                 <div class="about-content">
                     <div class="about-intro">
                         <p class="intro-text">
-                            Como estudante de Análise e Desenvolvimento de Sistemas, sou motivado pelo potencial da
-                            tecnologia em gerar valor para os negócios e facilitar o dia a dia. Meu objetivo é dedicar
-                            meu aprendizado para ser capaz de construir soluções que impulsionem a eficiência e a
-                            geração de valor.
+                            Interessado em análise de dados, business intelligence e machine learning.
+
+                            Formado em Análise e Desenvolvimento de Sistemas, direcionando minha carreira para a análise
+                            de dados.
+
+                            Atualmente, meu foco está no aprimoramento das minhas habilidades em SQL e Python (Pandas)
+                            para manipulação de dados, além de Power BI, Tableau e Excel para visualização de métricas.
+                            Em paralelo, aprofundo meus estudos nos fundamentos de Machine Learning.
                         </p>
                     </div>
 
-                    <div class="about-details">
-                        <div class="detail-card">
-                            <div class="card-icon">🎯</div>
-                            <h3 class="card-title">Foco</h3>
-                            <p class="card-description">
-                                Foco na automação de processos e no desenvolvimento de soluções com Python, aplicados às
-                                áreas de Análise de Dados, IA e Cloud.
-                            </p>
-                        </div>
+                </div>
 
-                    </div>
-
-                    <div class="about-action">
-                        <div class="action-link" onclick="window.SumieSidebar.setActiveSection('skills')">
-                            <span>Ver minhas habilidades</span>
-                            <div class="action-arrow">→</div>
-                        </div>
+                <div class="about-action">
+                    <div class="action-link" onclick="window.SumieSidebar.setActiveSection('skills')">
+                        <span>Ver minhas habilidades</span>
+                        <div class="action-arrow">→</div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
 
@@ -184,71 +181,38 @@
 
                 <!-- Conteúdo das Habilidades -->
                 <div class="skills-content">
-
-                    <!-- Linguagens de Programação -->
                     <div class="skill-block">
-                        <div class="skill-info">
-                            <h3 class="skill-title">Linguagens de Programação</h3>
-                            <div class="skill-tech">
-                                <div class="tech-item">
-                                    <img src="assets/images/icon-python.svg" alt="Python" class="tech-icon">
-                                    <span class="tech-name">Python</span>
-                                </div>
+                        <div class="skill-tech">
+                            <div class="tech-item">
+                                <img src="assets/images/icon-python.svg" alt="Python" class="tech-icon">
+                                <span class="tech-name">Python</span>
                             </div>
-                            <p class="skill-description">Desenvolvimento backend, automação e análise de dados</p>
+                            <div class="tech-item">
+                                <img src="assets/images/icon-mongodb.svg" alt="MongoDB" class="tech-icon">
+                                <span class="tech-name">MongoDB</span>
+                            </div>
+                            <div class="tech-item">
+                                <img src="assets/images/Pandas.svg" alt="Pandas" class="tech-icon">
+                                <span class="tech-name">Pandas</span>
+                            </div>
+                            <div class="tech-item">
+                                <img src="assets/images/Streamlit.svg" alt="Streamlit" class="tech-icon">
+                                <span class="tech-name">Streamlit</span>
+                            </div>
+                            <div class="tech-item">
+                                <img src="assets/images/SQL Developer.svg" alt="SQL Developer" class="tech-icon">
+                                <span class="tech-name">SQL Developer</span>
+                            </div>
+                            <div class="tech-item">
+                                <img src="assets/images/SQLite.svg" alt="SQLite" class="tech-icon">
+                                <span class="tech-name">SQLite</span>
+                            </div>
+                            <div class="tech-item">
+                                <img src="assets/images/MySQL.svg" alt="MySQL" class="tech-icon">
+                                <span class="tech-name">MySQL</span>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Dados -->
-                    <div class="skill-block">
-                        <div class="skill-info">
-                            <h3 class="skill-title">Dados</h3>
-                            <div class="skill-tech">
-                                <div class="tech-item">
-                                    <img src="assets/images/icon-mongodb.svg" alt="MongoDB" class="tech-icon">
-                                    <span class="tech-name">MongoDB</span>
-                                </div>
-                                <div class="tech-item">
-                                    <img src="assets/images/icon-tableau.svg" alt="Tableau" class="tech-icon">
-                                    <span class="tech-name">Tableau</span>
-                                </div>
-                            </div>
-                            <p class="skill-description">Banco de dados NoSQL e visualização de dados interativa</p>
-                        </div>
-                    </div>
-
-                    <!-- Cloud Computing -->
-                    <div class="skill-block">
-                        <div class="skill-info">
-                            <h3 class="skill-title">Cloud Computing</h3>
-                            <div class="skill-tech">
-                                <div class="tech-item">
-                                    <img src="assets/images/icon-aws.svg" alt="AWS" class="tech-icon">
-                                </div>
-                                <div class="tech-item">
-                                    <img src="assets/images/icon-azure.svg" alt="Azure" class="tech-icon">
-                                    <span class="tech-name">Azure</span>
-                                </div>
-                            </div>
-                            <p class="skill-description">Infraestrutura e serviços em nuvem para aplicações escaláveis
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- DevOps -->
-                    <div class="skill-block">
-                        <div class="skill-info">
-                            <h3 class="skill-title">DevOps</h3>
-                            <div class="skill-tech">
-                                <div class="tech-item">
-                                    <img src="assets/images/icon-docker.svg" alt="Docker" class="tech-icon">
-                                    <span class="tech-name">Docker</span>
-                                </div>
-                            </div>
-                            <p class="skill-description">Containerização e deployment de aplicações</p>
-                        </div>
-                    </div>
-
                 </div>
 
                 <!-- Ação -->
@@ -280,27 +244,30 @@
                                 <div class="project-card">
                                     <div class="project-image">
                                         <div class="image-placeholder">
-                                            <span>Em desenvolvimento</span>
+                                            <span>Brasil Fiscal: Dashboard de Independência Municipal</span>
                                         </div>
                                     </div>
                                     <div class="project-content">
-                                        <h3 class="project-title">Projeto em Desenvolvimento</h3>
+                                        <h3 class="project-title">Brasil Fiscal: Dashboard de Independência Municipal
+                                        </h3>
                                         <p class="project-description">
-                                            Este projeto está sendo desenvolvido e será adicionado ao portfólio em
-                                            breve.
-                                            Acompanhe as atualizações para conhecer mais detalhes.
+                                            Web app interativo que analisa a autonomia financeira das 5.570 cidades
+                                            brasileiras. Consome dados do Tesouro Nacional via Google BigQuery, processa
+                                            indicadores de arrecadação com Pandas e renderiza painéis e rankings
+                                            regionais com Streamlit.
                                         </p>
                                         <div class="project-tech">
                                             <img data-src="assets/images/icon-python.svg" alt="Python"
                                                 class="project-tech-icon lazy-load">
-                                            <img data-src="assets/images/icon-mongodb.svg" alt="MongoDB"
+                                            <img data-src="assets/images/Pandas.svg" alt="Pandas"
                                                 class="project-tech-icon lazy-load">
-                                            <img data-src="assets/images/icon-aws.svg" alt="AWS" class="project-tech-icon lazy-load">
+                                            <img data-src="assets/images/Streamlit.svg" alt="Streamlit"
+                                                class="project-tech-icon lazy-load">
                                         </div>
                                         <div class="project-actions">
                                             <div class="project-link-disabled">
-                                                <span>Em breve</span>
-                                                <div class="link-arrow">⏳</div>
+                                                <span>Concluído</span>
+                                                <div class="link-arrow">✅</div>
                                             </div>
                                         </div>
                                     </div>
@@ -360,7 +327,8 @@
                                                 class="project-tech-icon lazy-load">
                                             <img data-src="assets/images/icon-docker.svg" alt="Docker"
                                                 class="project-tech-icon lazy-load">
-                                            <img data-src="assets/images/icon-aws.svg" alt="AWS" class="project-tech-icon lazy-load">
+                                            <img data-src="assets/images/icon-aws.svg" alt="AWS"
+                                                class="project-tech-icon lazy-load">
                                         </div>
                                         <div class="project-actions">
                                             <div class="project-link-disabled">
@@ -430,7 +398,8 @@
                             </div>
                             <div class="contact-info">
                                 <h3 class="contact-label">Email</h3>
-                                <a href="mailto:seuemail@exemplo.com" class="contact-link">pedro.mmoitinho45@gmail.com</a>
+                                <a href="mailto:seuemail@exemplo.com"
+                                    class="contact-link">pedro.mmoitinho45@gmail.com</a>
                             </div>
                         </div>
 
