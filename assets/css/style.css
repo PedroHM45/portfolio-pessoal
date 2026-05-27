@@ -1369,7 +1369,7 @@ body::before {
 /* ===== IMAGEM DO PROJETO ===== */
 .project-image {
     width: 100%;
-    height: 200px;
+    height: 280px;
     position: relative;
     overflow: hidden;
 }
@@ -1390,6 +1390,15 @@ body::before {
     color: var(--ink-medium);
     font-family: var(--font-body);
     letter-spacing: 1px;
+}
+
+.project-cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 10;
+    position: relative;
 }
 
 .project-card:hover .image-placeholder {
