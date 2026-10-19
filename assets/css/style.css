@@ -1453,6 +1453,7 @@ body::before {
 .project-actions {
     display: flex;
     justify-content: flex-end;
+    gap: 24px;
 }
 
 .project-link {
