@@ -1070,6 +1070,96 @@ class NotificationManager {
     }
 }
 
+/**
+ * Galeria de imagens de demonstração dos projetos
+ */
+class ProjectGallery {
+    constructor() {
+        this.modal = document.querySelector('.gallery-modal');
+        if (!this.modal) return;
+
+        this.image = this.modal.querySelector('.gallery-image');
+        this.title = this.modal.querySelector('.gallery-title');
+        this.counter = this.modal.querySelector('.gallery-counter');
+        this.thumbs = this.modal.querySelector('.gallery-thumbs');
+        this.images = [];
+        this.currentIndex = 0;
+        this.lastTrigger = null;
+
+        this.init();
+    }
+
+    init() {
+        document.querySelectorAll('[data-gallery-images]').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const images = trigger.dataset.galleryImages.split(',').map(src => src.trim());
+                this.lastTrigger = trigger;
+                this.open(images, trigger.dataset.galleryTitle || '');
+            });
+        });
+
+        this.modal.querySelectorAll('[data-gallery-close]').forEach(el => {
+            el.addEventListener('click', () => this.close());
+        });
+        this.modal.querySelector('.gallery-prev').addEventListener('click', () => this.show(this.currentIndex - 1));
+        this.modal.querySelector('.gallery-next').addEventListener('click', () => this.show(this.currentIndex + 1));
+
+        document.addEventListener('keydown', (e) => {
+            if (this.modal.hidden) return;
+            if (e.key === 'Escape') this.close();
+            if (e.key === 'ArrowLeft') this.show(this.currentIndex - 1);
+            if (e.key === 'ArrowRight') this.show(this.currentIndex + 1);
+        });
+    }
+
+    open(images, title) {
+        this.images = images;
+        this.title.textContent = title;
+        this.renderThumbs();
+        this.show(0);
+
+        this.modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        this.modal.querySelector('.gallery-close').focus();
+    }
+
+    close() {
+        this.modal.hidden = true;
+        document.body.style.overflow = '';
+        this.lastTrigger?.focus();
+    }
+
+    show(index) {
+        const total = this.images.length;
+        this.currentIndex = (index + total) % total;
+
+        this.image.src = this.images[this.currentIndex];
+        this.image.alt = `${this.title.textContent} - imagem ${this.currentIndex + 1} de ${total}`;
+        this.counter.textContent = `${this.currentIndex + 1} / ${total}`;
+
+        this.thumbs.querySelectorAll('.gallery-thumb').forEach((thumb, i) => {
+            thumb.classList.toggle('active', i === this.currentIndex);
+        });
+    }
+
+    renderThumbs() {
+        this.thumbs.replaceChildren(...this.images.map((src, i) => {
+            const thumb = document.createElement('button');
+            thumb.type = 'button';
+            thumb.className = 'gallery-thumb';
+            thumb.setAttribute('aria-label', `Ver imagem ${i + 1}`);
+
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = '';
+            thumb.appendChild(img);
+
+            thumb.addEventListener('click', () => this.show(i));
+            return thumb;
+        }));
+    }
+}
+
 // ===== INICIALIZAÇÃO =====
 
 // Aguarda o DOM estar carregado
@@ -1079,7 +1169,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.PerformanceManager = new PerformanceManager();
     window.ThemeManager = new ThemeManager();
     window.NotificationManager = new NotificationManager();
-    
+    window.ProjectGallery = new ProjectGallery();
+
     // Configuração global de erro segura
     window.addEventListener('error', (e) => {
         // Log interno sem detalhes sensíveis
