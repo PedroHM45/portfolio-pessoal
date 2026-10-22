@@ -36,7 +36,15 @@ html {
     /* Tipografia japonesa */
     --font-japanese: 'Noto Serif JP', serif;
     --font-latin: 'Noto Sans JP', sans-serif;
-    
+    --font-heading: var(--font-japanese); /* títulos: serifada */
+    --font-body: var(--font-latin);       /* textos: sem serifa */
+
+    /* Escala tipográfica */
+    --text-title: 2.8rem;      /* título de seção */
+    --text-subtitle: 1.2rem;   /* título de card/categoria/projeto */
+    --text-body: 1.05rem;      /* parágrafos */
+    --text-small: 0.9rem;      /* links e rótulos */
+
     /* Medidas */
     --sidebar-width: 300px;
     --border-radius: 0;
@@ -61,7 +69,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
+    background-image:
         radial-gradient(circle at 25% 25%, rgba(26, 26, 26, 0.02) 0%, transparent 50%),
         radial-gradient(circle at 75% 75%, rgba(26, 26, 26, 0.015) 0%, transparent 50%);
     pointer-events: none;
@@ -545,32 +553,7 @@ body::before {
     align-items: center;
 }
 
-#contact .section-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
-    width: 100%;
-}
-
-#contact .section-title {
-    text-align: center;
-    margin: 0;
-}
-
-#contact .title-underline {
-    margin-bottom: 3rem;
-    opacity: 0;
-    animation: expandLine 0.8s var(--transition-ease) 1s forwards;
-}
-
 /* Animações da seção de contato */
-#contact .section-header {
-    opacity: 0;
-    animation: fadeInUp 1s var(--transition-ease) 0.2s forwards;
-}
-
 #contact .contact-description {
     opacity: 0;
     animation: fadeInUp 1s var(--transition-ease) 0.6s forwards;
@@ -627,7 +610,7 @@ body::before {
     color: var(--ink-black);
     font-family: var(--font-heading);
     margin: 0;
-    letter-spacing: -2px;
+    letter-spacing: 0.04em;
     position: relative;
 }
 
@@ -788,7 +771,7 @@ body::before {
 @media (max-width: 480px) {
     .name {
         font-size: 2.8rem;
-        letter-spacing: -1px;
+        letter-spacing: 0.02em;
     }
     
     .description {
@@ -812,28 +795,35 @@ body::before {
     min-height: 100vh;
 }
 
-/* ===== HEADER DA SEÇÃO ===== */
-.about-header {
+/* ===== CABEÇALHO PADRÃO DAS SEÇÕES ===== */
+/* Estrutura: .section-header > .section-title + .title-underline */
+.section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 70px;
     text-align: center;
-    margin-bottom: 60px;
     opacity: 0;
     animation: fadeInUp 1s var(--transition-ease) 0.2s forwards;
 }
 
 .section-title {
-    font-size: 3rem;
+    margin: 0 0 22px;
+    font-family: var(--font-japanese);
+    font-size: var(--text-title);
     font-weight: 300;
+    letter-spacing: 0.12em;
+    text-indent: 0.12em;
+    line-height: 1.2;
     color: var(--ink-black);
-    font-family: var(--font-heading);
-    margin: 0 0 20px 0;
-    letter-spacing: -1px;
 }
 
+/* Traço de pincel simétrico */
 .title-underline {
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--ink-black) 0%, transparent 100%);
-    margin: 0 auto;
+    width: 96px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--ink-black) 50%, transparent 100%);
     opacity: 0;
     animation: expandLine 0.8s var(--transition-ease) 1s forwards;
 }
@@ -845,19 +835,40 @@ body::before {
 }
 
 .about-intro {
-    text-align: center;
-    margin-bottom: 60px;
+    max-width: 680px;
+    margin: 0 auto 60px;
+    padding-left: 32px;
+    border-left: 1px solid rgba(26, 26, 26, 0.15);
+    text-align: left;
     opacity: 0;
     animation: fadeInUp 1s var(--transition-ease) 0.6s forwards;
 }
 
 .intro-text {
-    font-size: 1.3rem;
-    line-height: 1.7;
+    font-size: var(--text-body);
+    line-height: 1.85;
     color: var(--ink-medium);
     font-family: var(--font-body);
     font-weight: 300;
-    margin: 0;
+    margin: 0 0 1.4em;
+}
+
+.intro-text:last-child {
+    margin-bottom: 0;
+}
+
+.intro-text strong {
+    font-weight: 500;
+    color: var(--ink-black);
+}
+
+.intro-lead {
+    font-family: var(--font-heading);
+    font-size: var(--text-subtitle);
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--ink-black);
+    margin-bottom: 1em;
 }
 
 /* ===== CARDS DE DETALHES ===== */
@@ -995,14 +1006,20 @@ body::before {
         padding: 60px 30px;
     }
     
-    .section-title {
-        font-size: 2.5rem;
+    .section-header {
+        margin-bottom: 50px;
+    }
+
+    :root {
+        --text-title: 2.2rem;
+        --text-subtitle: 1.1rem;
+        --text-body: 1rem;
     }
     
-    .intro-text {
-        font-size: 1.1rem;
+    .about-intro {
+        padding-left: 22px;
     }
-    
+
     .about-details {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -1015,14 +1032,19 @@ body::before {
 }
 
 @media (max-width: 480px) {
+    :root {
+        --text-title: 1.8rem;
+    }
+
     .section-title {
-        font-size: 2rem;
+        letter-spacing: 0.08em;
+        text-indent: 0.08em;
     }
     
-    .intro-text {
-        font-size: 1rem;
+    .about-intro {
+        padding-left: 16px;
     }
-    
+
     .detail-card {
         padding: 30px 15px;
     }
@@ -1040,137 +1062,96 @@ body::before {
     min-height: 100vh;
 }
 
-/* ===== HEADER DA SEÇÃO HABILIDADES ===== */
-.skills-header {
-    text-align: center;
-    margin-bottom: 80px;
-    opacity: 0;
-    animation: fadeInUp 1s var(--transition-ease) 0.2s forwards;
-}
-
 /* ===== CONTEÚDO DAS HABILIDADES ===== */
 .skills-content {
-    max-width: 900px;
-    margin: 0 auto;
     width: 100%;
-    display: flex;
-    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     opacity: 0;
     animation: fadeInUp 1s var(--transition-ease) 0.6s forwards;
 }
 
-/* ===== BLOCOS DE HABILIDADES ===== */
+/* ===== BLOCOS DE CATEGORIA ===== */
 .skill-block {
-    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 36px 32px;
     background: rgba(248, 247, 244, 0.4);
     border: 1px solid rgba(26, 26, 26, 0.08);
     border-radius: 12px;
     transition: all 0.4s var(--transition-ease);
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 700px;
-    position: relative;
-    overflow: hidden;
 }
 
 .skill-block:hover {
     background: rgba(248, 247, 244, 0.7);
     border-color: rgba(26, 26, 26, 0.15);
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(26, 26, 26, 0.1);
-}
-
-/* ===== CATEGORIAS DE HABILIDADES ===== */
-.skill-category {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    box-shadow: 0 12px 30px rgba(26, 26, 26, 0.08);
 }
 
 .skill-category-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--ink-black);
+    margin: 0;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.12);
     font-family: var(--font-heading);
-    margin: 0 0 20px 0;
+    font-size: var(--text-subtitle);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--ink-black);
     line-height: 1.3;
 }
 
-/* ===== INFORMAÇÕES DAS HABILIDADES ===== */
-.skill-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.skill-title {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--ink-black);
-    font-family: var(--font-heading);
-    margin: 0 0 25px 0;
-    line-height: 1.3;
-}
-
+/* ===== GRADE DE TECNOLOGIAS ===== */
 .skill-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 16px;
 }
 
 .tech-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
-    background: rgba(26, 26, 26, 0.06);
-    padding: 10px 14px;
-    border-radius: 20px;
-    transition: all 0.3s var(--transition-ease);
-    width: auto;
     justify-content: center;
-    white-space: nowrap;
-    font-size: 0.95rem;
-}
-
-.skill-block:hover .tech-item {
-    background: rgba(26, 26, 26, 0.1);
-}
-
-/* ===== ÍCONES DAS TECNOLOGIAS ===== */
-.tech-icon {
-    width: 36px;
-    height: 36px;
-    flex-shrink: 0;
+    gap: 12px;
+    padding: 20px 12px;
+    background: rgba(26, 26, 26, 0.04);
+    border-radius: 10px;
+    text-align: center;
     transition: all 0.3s var(--transition-ease);
+}
+
+.tech-item:hover {
+    background: rgba(26, 26, 26, 0.08);
+    transform: translateY(-3px);
+}
+
+.tech-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
     filter: grayscale(0.2) opacity(0.9);
+    transition: all 0.3s var(--transition-ease);
 }
 
 .tech-item:hover .tech-icon {
     filter: grayscale(0) opacity(1);
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .tech-name {
-    font-size: 0.9rem;
-    font-family: var(--font-body);
+    font-family: var(--font-latin);
+    font-size: 0.85rem;
     font-weight: 500;
+    letter-spacing: 0.3px;
     color: var(--ink-black);
-    letter-spacing: 0.5px;
-}
-
-.skill-description {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--ink-medium);
-    font-family: var(--font-body);
-    margin: 0;
-    margin-top: auto;
+    line-height: 1.3;
 }
 
 /* ===== AÇÃO DA SEÇÃO HABILIDADES ===== */
@@ -1186,38 +1167,15 @@ body::before {
     .skills-container {
         padding: 60px 30px;
     }
-    
-    .skills-header {
-        margin-bottom: 60px;
-    }
-    
+
     .skills-content {
-        max-width: 100%;
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
-    
+
     .skill-block {
-        padding: 35px 25px;
-        gap: 30px;
-    }
-    
-    .skill-category-title {
-        font-size: 1.2rem;
-        margin-bottom: 18px;
-    }
-    
-    .skill-title {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-    }
-    
-    .tech-item {
-        padding: 10px 14px;
-        font-size: 0.9rem;
-    }
-    
-    .tech-icon {
-        width: 32px;
-        height: 32px;
+        padding: 28px 24px;
+        gap: 22px;
     }
 }
 
@@ -1225,54 +1183,27 @@ body::before {
     .skills-container {
         padding: 50px 20px;
     }
-    
-    .skills-content {
-        max-width: 100%;
-    }
-    
+
     .skill-block {
-        padding: 25px 20px;
-        gap: 25px;
+        padding: 24px 18px;
     }
-    
-    .skill-category-title {
-        font-size: 1.1rem;
-        margin-bottom: 15px;
+
+    .skill-tech {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 12px;
     }
-    
-    .skill-title {
-        font-size: 1.1rem;
-        margin-bottom: 15px;
-    }
-    
-    .skill-description {
-        font-size: 0.9rem;
-    }
-    
+
     .tech-item {
-        padding: 8px 12px;
-        font-size: 0.85rem;
+        padding: 16px 8px;
     }
-    
+
     .tech-icon {
-        width: 28px;
-        height: 28px;
+        width: 36px;
+        height: 36px;
     }
-    
-    .tech-item {
-        width: 100%;
-        max-width: 160px;
-        padding: 10px 14px;
-        gap: 10px;
-    }
-    
+
     .tech-name {
-        font-size: 0.8rem;
-    }
-    
-    .tech-icon {
-        width: 32px;
-        height: 32px;
+        font-size: 0.78rem;
     }
 }
 
@@ -1286,14 +1217,6 @@ body::before {
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
-}
-
-/* ===== HEADER DA SEÇÃO PROJETOS ===== */
-.projects-header {
-    text-align: center;
-    margin-bottom: 80px;
-    opacity: 0;
-    animation: fadeInUp 1s var(--transition-ease) 0.2s forwards;
 }
 
 /* ===== CARROSSEL DE PROJETOS ===== */
@@ -1413,8 +1336,8 @@ body::before {
 }
 
 .project-title {
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: var(--text-subtitle);
+    font-weight: 500;
     color: var(--ink-black);
     font-family: var(--font-heading);
     margin: 0 0 15px 0;
@@ -1422,7 +1345,7 @@ body::before {
 }
 
 .project-description {
-    font-size: 1rem;
+    font-size: var(--text-body);
     line-height: 1.6;
     color: var(--ink-medium);
     font-family: var(--font-body);
@@ -1557,8 +1480,8 @@ body::before {
 
 .gallery-title {
     flex: 1;
-    font-family: var(--font-japanese);
-    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    font-size: var(--text-subtitle);
     font-weight: 500;
     color: var(--ink-black);
 }
@@ -1778,10 +1701,6 @@ body::before {
         padding: 60px 30px;
     }
     
-    .projects-header {
-        margin-bottom: 60px;
-    }
-    
     .projects-carousel {
         max-width: 100%;
         margin-bottom: 50px;
@@ -1801,10 +1720,6 @@ body::before {
     
     .project-content {
         padding: 25px;
-    }
-    
-    .project-title {
-        font-size: 1.2rem;
     }
     
     .project-tech-icon {
@@ -1843,12 +1758,10 @@ body::before {
     }
     
     .project-title {
-        font-size: 1.1rem;
         margin-bottom: 12px;
     }
     
     .project-description {
-        font-size: 0.9rem;
         margin-bottom: 20px;
     }
     
@@ -1880,7 +1793,8 @@ body::before {
 }
 
 .contact-description {
-    font-size: 1.1rem;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
     line-height: 1.7;
     color: var(--ink-medium);
     max-width: 600px;
@@ -1959,8 +1873,9 @@ body::before {
 }
 
 .contact-label {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: var(--text-subtitle);
+    font-weight: 500;
     color: var(--ink-black);
     margin: 0 0 0.75rem 0;
     letter-spacing: 0.5px;
@@ -1969,7 +1884,8 @@ body::before {
 .contact-link {
     color: var(--ink-medium);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-family: var(--font-body);
+    font-size: var(--text-small);
     font-weight: 400;
     transition: all 0.3s var(--transition-ease);
     position: relative;
@@ -2034,9 +1950,6 @@ body::before {
         height: 50px;
     }
     
-    .contact-description {
-        font-size: 1rem;
-    }
 }
 
 /* ===== NOTIFICAÇÃO DE CÓPIA DE EMAIL ===== */
